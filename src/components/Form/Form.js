@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { NumericFormat } from "react-number-format";
 
+import "./form.css";
 import FormImage from "../../assets/img/form-header-photo.svg";
 import { LoanContext } from "../../context/LoanContext";
 import { ModalContext } from "../../context/ModalContext";
 import LoanModal from "../LoanModal/LoanModal";
-import "./form.css";
 
 function Form() {
   const { isOpenModal, dispatch } = useContext(ModalContext);

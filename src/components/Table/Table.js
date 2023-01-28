@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { LoanContext } from "../../context/LoanContext";
-import { handleMortgageDataChange } from "../../utils/test";
 
 import "./table.css";
+import { LoanContext } from "../../context/LoanContext";
+import { handleMortgageDataChange } from "../../utils/test";
 
 function Table() {
   const {
@@ -12,6 +12,9 @@ function Table() {
     installmentFrequency,
     taxRate,
   } = useContext(LoanContext);
+
+  // bsmv = %0.10
+  // kkdf = %0.15
 
   // const yearlyPayments = handleMortgageDataChange(loanAmount, installmentNumber, interestRate, monthlyPayment);
 
@@ -31,158 +34,67 @@ function Table() {
   // }
 
   return (
-    <div className="">
-      <table class="styled-table">
+    <>
+      <table>
         <thead>
           <tr>
-            <th>Taksit No</th>
-            <th>Taksit Tutarı</th>
-            <th>Ana Para</th>
-            <th>Kalan Ana Para</th>
-            <th>Kar Tutarı</th>
-            <th>KKDF</th>
-            <th>BSMV</th>
+            <th scope="col">Taksit No</th>
+            <th scope="col">Taksit Tutarı</th>
+            <th scope="col">Ana Para</th>
+            <th scope="col">Kalan Ana Para</th>
+            <th scope="col">Kar Tutarı</th>
+            <th scope="col">KKDF</th>
+            <th scope="col">BSMV</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
+            <td scope="row" data-label="Taksit No">
+              1
+            </td>
+            <td data-label="Taksit Tutarı">9.956.46 TL</td>
+            <td data-label="Ana Para">7.106.46 TL</td>
+            <td data-label="Kalan Ana Para">92.893.54 TL</td>
+            <td data-label="Kar Tutarı">2.280,00</td>
+            <td data-label="KKDF">342,00</td>
+            <td data-label="BSMV">228,00</td>
           </tr>
           <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
+            <td scope="row" data-label="Taksit No">
+              1
+            </td>
+            <td data-label="Taksit Tutarı">9.956.46 TL</td>
+            <td data-label="Ana Para">7.106.46 TL</td>
+            <td data-label="Kalan Ana Para">92.893.54 TL</td>
+            <td data-label="Kar Tutarı">2.280,00</td>
+            <td data-label="KKDF">342,00</td>
+            <td data-label="BSMV">228,00</td>
           </tr>
           <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
+            <td scope="row" data-label="Taksit No">
+              1
+            </td>
+            <td data-label="Taksit Tutarı">9.956.46 TL</td>
+            <td data-label="Ana Para">7.106.46 TL</td>
+            <td data-label="Kalan Ana Para">92.893.54 TL</td>
+            <td data-label="Kar Tutarı">2.280,00</td>
+            <td data-label="KKDF">342,00</td>
+            <td data-label="BSMV">228,00</td>
           </tr>
           <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>9.956.46 TL</td>
-            <td>7.106.46 TL</td>
-            <td>92.893.54 TL</td>
-            <td>2.280,00</td>
-            <td>342,00</td>
-            <td>228,00</td>
+            <td scope="row" data-label="Taksit No">
+              1
+            </td>
+            <td data-label="Taksit Tutarı">9.956.46 TL</td>
+            <td data-label="Ana Para">7.106.46 TL</td>
+            <td data-label="Kalan Ana Para">92.893.54 TL</td>
+            <td data-label="Kar Tutarı">2.280,00</td>
+            <td data-label="KKDF">342,00</td>
+            <td data-label="BSMV">228,00</td>
           </tr>
         </tbody>
       </table>
-    </div>
+    </>
   );
 }
 

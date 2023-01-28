@@ -1,0 +1,4 @@
+.loanDetailsContainer {
+  display: flex;
+  flex-direction: column;
+}

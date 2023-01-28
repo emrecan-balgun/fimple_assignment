@@ -1,13 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import './index.css';
-import App from './App';
+import "./index.css";
+import App from "./App";
+import { ModalContextProvider } from "./context/ModalContext";
+import { LoanContextProvider } from "./context/LoanContext";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <LoanContextProvider>
+      <ModalContextProvider>
+        <App />
+      </ModalContextProvider>
+    </LoanContextProvider>
   </React.StrictMode>
 );

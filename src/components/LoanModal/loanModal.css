@@ -1,3 +1,7 @@
+.customModal {
+  border-radius: 12px;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

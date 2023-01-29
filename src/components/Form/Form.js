@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { NumericFormat } from "react-number-format";
+import { successNotify, warningNotify } from "../../constants/toastify";
 
 import "./form.css";
 import FormImage from "../../assets/img/form-header-photo.svg";
@@ -29,19 +30,32 @@ function Form() {
     setInterestRate(formattedNewRate);
   };
 
+  const checkInputs = () => {
+    !loanAmount ||
+    !interestRate ||
+    !installmentNumber ||
+    !installmentFrequency ||
+    !taxRate
+      ? warningNotify()
+      : handleModal();
+  };
+
   // Modal
   const handleModal = () => {
-    dispatch({ type: "SET_OPEN_MODAL", payload: true });
-    dispatchLoan({
-      type: "CHANGE_DETAILS",
-      payload: {
-        loanAmount,
-        interestRate,
-        installmentNumber,
-        installmentFrequency,
-        taxRate,
-      },
-    });
+    successNotify();
+    setTimeout(() => {
+      dispatch({ type: "SET_OPEN_MODAL", payload: true });
+      dispatchLoan({
+        type: "CHANGE_DETAILS",
+        payload: {
+          loanAmount,
+          interestRate,
+          installmentNumber,
+          installmentFrequency,
+          taxRate,
+        },
+      });
+    }, 5000);
   };
 
   return (
@@ -166,7 +180,7 @@ function Form() {
             </div>
           </div>
         </div>
-        <button className="btn" onClick={(e) => handleModal()}>
+        <button className="btn" onClick={(e) => checkInputs()}>
           Calculate
         </button>
         {isOpenModal && <LoanModal />}

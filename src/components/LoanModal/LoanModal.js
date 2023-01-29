@@ -21,7 +21,15 @@ function LoanModal() {
   };
 
   return (
-    <Modal open={open} onClose={onCloseModal} showCloseIcon={false} center>
+    <Modal
+      open={open}
+      onClose={onCloseModal}
+      showCloseIcon={false}
+      classNames={{
+        modal: "customModal",
+      }}
+      center
+    >
       <h2 className="modalTitle">Payback Plan</h2>
       <LoanDetails />
       <div className="buttonContainer">

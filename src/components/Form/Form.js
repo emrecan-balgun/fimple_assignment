@@ -39,8 +39,6 @@ function Form() {
 
   useEffect(() => {
     myInputRef.current.focus();
-    const language = localStorage.getItem("language");
-    i18n.changeLanguage(language);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

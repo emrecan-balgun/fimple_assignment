@@ -10,7 +10,7 @@ export const calculate = (balance, rate, terms, taxRate) => {
   let period = rate / 12;
 
   //Calculate the payment
-  let payment = balance * (period / (1 - Math.pow(1 + period, - terms)));
+  let payment = balance * (period / (1 - Math.pow(1 + period, -terms)));
 
   //begin building the return string for the display of the amort table
   detail = [

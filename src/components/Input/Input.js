@@ -12,16 +12,14 @@ const Input = forwardRef((props, ref) => {
     },
     change: (newValue) => {
       inputRef.current.value = newValue;
-    }
+    },
   }));
 
   const currency = localStorage.getItem("currency");
 
-  console.log(currency);
-
   return (
     <NumericFormat
-    valueIsNumericString={true}
+      valueIsNumericString={true}
       prefix={currency}
       thousandsGroupStyle="thousand"
       thousandSeparator=","

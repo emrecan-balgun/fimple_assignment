@@ -3,7 +3,7 @@ import { NumericFormat } from "react-number-format";
 import { useTranslation } from "react-i18next";
 
 import "./form.css";
-import  Toastify from "../../constants/toastify";
+import Toastify from "../../constants/toastify";
 import FormImage from "../../assets/img/form-header-photo.svg";
 import { LoanContext } from "../../context/LoanContext";
 import { ModalContext } from "../../context/ModalContext";
@@ -39,6 +39,7 @@ function Form() {
 
   useEffect(() => {
     myInputRef.current.focus();
+    i18n.changeLanguage(localStorage.getItem("language"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -60,14 +61,23 @@ function Form() {
   };
 
   const resetInputs = () => {
-    myInputRef.current.change("");
-    interestRateRef.current.value = "";
-    installmentNumberRef.current.value = "";
-    installmentFrequencyWeekRef.current.checked = false;
-    installmentFrequencyMonthRef.current.checked = false;
-    installmentFrequencyYearRef.current.checked = false;
-    taxRateBSMVRef.current.checked = false;
-    taxRateKKDFRef.current.checked = false;
+    alert("girdim");
+    if (
+      myInputRef.current.value() ||
+      interestRate ||
+      installmentNumber ||
+      installmentFrequency ||
+      taxRate
+    ) {
+      myInputRef.current.change("");
+      interestRateRef.current.value = "";
+      installmentNumberRef.current.value = "";
+      installmentFrequencyWeekRef.current.checked = false;
+      installmentFrequencyMonthRef.current.checked = false;
+      installmentFrequencyYearRef.current.checked = false;
+      taxRateBSMVRef.current.checked = false;
+      taxRateKKDFRef.current.checked = false;
+    }
   };
 
   // Modal
@@ -80,7 +90,10 @@ function Form() {
         type: "CHANGE_DETAILS",
         payload: {
           // remove prefix currency and commas
-          loanAmount: myInputRef.current.value().replace(currency, "").replace(/,/g, ""),
+          loanAmount: myInputRef.current
+            .value()
+            .replace(currency, "")
+            .replace(/,/g, ""),
           interestRate,
           installmentNumber,
           installmentFrequency,
@@ -100,7 +113,6 @@ function Form() {
           <div className="input-flex">
             <div>
               <label className="form-label">{t("Loan amount")}</label>
-              {/* <MyInput newValue="500" ref={myInputRef} /> */}
               <Input ref={myInputRef} />
             </div>
             <div>

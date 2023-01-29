@@ -10,8 +10,8 @@ const Input = forwardRef((props, ref) => {
     value: () => {
       return inputRef.current.value;
     },
-    change: () => {
-      inputRef.current.value = props.newValue;
+    change: (newValue) => {
+      inputRef.current.value = newValue;
     }
   }));
 

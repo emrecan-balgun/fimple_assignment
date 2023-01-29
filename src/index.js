@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import { ModalContextProvider } from "./context/ModalContext";
 import { LoanContextProvider } from "./context/LoanContext";
+import './i18n';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

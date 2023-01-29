@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import "./loanDetails.css";
 import { LoanContext } from "../../context/LoanContext";
 import { calculate } from "../../utils/calculateLoan";
 
 function LoanDetails() {
+  const { t } = useTranslation();
   const { loanAmount, interestRate, installmentNumber, installmentFrequency, taxRate } =
     useContext(LoanContext);
   const [data, setData] = useState([]);
@@ -38,12 +40,12 @@ function LoanDetails() {
         detail.length > 0 && detail && detail.map((item, index) => {
           return (
             <div key={index} className="loanDetails">
-              <span className="loanDetailsItem">Loan amount: <b>${numberWithCommas(item.loanAmount)}</b></span>
-              <span className="loanDetailsItem">Interest rate: <b>%{numberWithCommas(item.interestRate)}</b></span>
-              <span className="loanDetailsItem">Installment number: <b>{numberWithCommas(item.installmentNumber)} {installmentFrequency}</b></span>
-              <span className="loanDetailsItem">Installment amount: <b>${numberWithCommas(item.periodPayment)}</b></span>
-              <span className="loanDetailsItem">Total paid: <b>${numberWithCommas(item.totalPaid)}</b></span>
-              <span className="loanDetailsItem">Total tax: <b>${numberWithCommas(item.totalTax)}</b></span>
+              <span className="loanDetailsItem">{t("Loan amount")}: <b>${numberWithCommas(item.loanAmount)}</b></span>
+              <span className="loanDetailsItem">{t("Interest rate")}: <b>%{numberWithCommas(item.interestRate)}</b></span>
+              <span className="loanDetailsItem">{t("Installment number")}: <b>{numberWithCommas(item.installmentNumber)} {t(installmentFrequency)}</b></span>
+              <span className="loanDetailsItem">{t("Installment amount")}: <b>${numberWithCommas(item.periodPayment)}</b></span>
+              <span className="loanDetailsItem">{t("Total paid")}: <b>${numberWithCommas(item.totalPaid)}</b></span>
+              <span className="loanDetailsItem">{t("Total tax")}: <b>${numberWithCommas(item.totalTax)}</b></span>
             </div>
           )
         })
@@ -51,12 +53,13 @@ function LoanDetails() {
       <table>
         <thead>
           <tr>
-            <th scope="col">No</th>
-            <th scope="col">Installment Amount</th>
-            <th scope="col">Profit Amount</th>
-            <th scope="col">Principal</th>
-            <th scope="col">Balance</th>
-            <th scope="col">{taxRate.toUpperCase()}</th>
+            <th scope="col">{t("No")}</th>
+            <th scope="col">{t("Installment amount")}</th>
+            <th scope="col">{t("Profit amount")}</th>
+            <th scope="col">{t("Principal")}</th>
+            <th scope="col">{t("Balance")}</th>
+            <th scope="col">{t(taxRate.toUpperCase())}</th> 
+            {/* test et tax rate */}
           </tr>
         </thead>
         <tbody>
@@ -68,13 +71,13 @@ function LoanDetails() {
                   <td data-label="No">
                     {item.no}
                   </td>
-                  <td data-label="Installment Amount">
+                  <td data-label={t("Installment amount")}>
                     ${item.installmentAmount}
                   </td>
-                  <td data-label="Profit Amount">${item.profitAmount}</td>
-                  <td data-label="Principal">${item.principal}</td>
-                  <td data-label="Balance">{item.balance}</td>
-                  <td data-label={taxRate.toUpperCase()}>${item.tax}</td>
+                  <td data-label={t("Profit amount")}>${item.profitAmount}</td>
+                  <td data-label={t("Principal")}>${item.principal}</td>
+                  <td data-label={t("Balance")}>{item.balance}</td>
+                  <td data-label={t(taxRate.toUpperCase())}>${item.tax}</td>
                 </tr>
               );
             })}

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Modal } from "react-responsive-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 import "react-responsive-modal/styles.css";
 
 import "./loanModal.css";
@@ -8,6 +9,7 @@ import { ModalContext } from "../../context/ModalContext";
 import LoanDetails from "../LoanDetails/LoanDetails";
 
 function LoanModal() {
+  const { t } = useTranslation();
   const { isOpenModal, dispatch } = useContext(ModalContext);
 
   const [open] = useState(isOpenModal);
@@ -26,11 +28,11 @@ function LoanModal() {
       }}
       center
     >
-      <h2 className="modalTitle">Payback Plan</h2>
+      <h2 className="modalTitle">{t("Payback plan")}</h2>
       <LoanDetails />
       <div className="buttonContainer">
         <button type="button" className="button" onClick={onCloseModal}>
-          <span className="buttonText">Close</span>
+          <span className="buttonText">{t("Close")}</span>
           <span className="buttonIcon">
             <AiFillCloseCircle />
           </span>

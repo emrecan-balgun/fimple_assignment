@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 import { successNotify, warningNotify } from "../../constants/toastify";
 
@@ -7,21 +7,20 @@ import FormImage from "../../assets/img/form-header-photo.svg";
 import { LoanContext } from "../../context/LoanContext";
 import { ModalContext } from "../../context/ModalContext";
 import LoanModal from "../LoanModal/LoanModal";
+import Input from "../Input/Input";
 
 function Form() {
+  const myInputRef = useRef();
   const { isOpenModal, dispatch } = useContext(ModalContext);
   const { dispatch: dispatchLoan } = useContext(LoanContext);
-  const [loanAmount, setLoanAmount] = useState(0);
   const [interestRate, setInterestRate] = useState(0);
   const [installmentNumber, setInstallmentNumber] = useState(0);
   const [installmentFrequency, setInstallmentFrequency] = useState(null);
   const [taxRate, setTaxRate] = useState(null);
 
-  const handleLoanAmount = (amount) => {
-    // remove prefix $ and commas
-    const newAmount = amount.replace(/[$,]/g, "");
-    setLoanAmount(newAmount);
-  };
+  useEffect(() => {
+    myInputRef.current.focus();
+  }, []);
 
   const handleInterestRate = (rate) => {
     // remove prefix %
@@ -31,7 +30,7 @@ function Form() {
   };
 
   const checkInputs = () => {
-    !loanAmount ||
+    !myInputRef.current.value() ||
     !interestRate ||
     !installmentNumber ||
     !installmentFrequency ||
@@ -42,13 +41,15 @@ function Form() {
 
   // Modal
   const handleModal = () => {
+    // handleLoanAmount();
     successNotify();
     setTimeout(() => {
       dispatch({ type: "SET_OPEN_MODAL", payload: true });
       dispatchLoan({
         type: "CHANGE_DETAILS",
         payload: {
-          loanAmount,
+          // remove prefix $ and commas
+          loanAmount: myInputRef.current.value().replace(/[$,]/g, ""),
           interestRate,
           installmentNumber,
           installmentFrequency,
@@ -66,14 +67,8 @@ function Form() {
         <div className="input-flex">
           <div>
             <label className="form-label">Loan amount</label>
-            <NumericFormat
-              prefix={"$"}
-              thousandsGroupStyle="thousand"
-              thousandSeparator=","
-              placeholder="$100,000"
-              className="form-input"
-              onChange={(e) => handleLoanAmount(e.target.value)}
-            />
+            {/* <MyInput newValue="500" ref={myInputRef} /> */}
+            <Input ref={myInputRef} />
           </div>
           <div>
             <label className="form-label">Interest rate</label>

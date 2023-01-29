@@ -26,6 +26,11 @@ function LoanDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // add commas to numbers
+  const numberWithCommas = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
 
   return (
     <>
@@ -33,12 +38,12 @@ function LoanDetails() {
         detail.length > 0 && detail && detail.map((item, index) => {
           return (
             <div key={index} className="loanDetails">
-              <span className="loanDetailsItem">Loan amount: <b>${item.loanAmount}</b></span>
-              <span className="loanDetailsItem">Interest rate: <b>%{item.interestRate}</b></span>
-              <span className="loanDetailsItem">Installment number: <b>{item.installmentNumber} {installmentFrequency}</b></span>
-              <span className="loanDetailsItem">Installment amount: <b>${item.periodPayment}</b></span>
-              <span className="loanDetailsItem">Total paid: <b>${item.totalPaid}</b></span>
-              <span className="loanDetailsItem">Total tax: <b>${item.totalTax}</b></span>
+              <span className="loanDetailsItem">Loan amount: <b>${numberWithCommas(item.loanAmount)}</b></span>
+              <span className="loanDetailsItem">Interest rate: <b>%{numberWithCommas(item.interestRate)}</b></span>
+              <span className="loanDetailsItem">Installment number: <b>{numberWithCommas(item.installmentNumber)} {installmentFrequency}</b></span>
+              <span className="loanDetailsItem">Installment amount: <b>${numberWithCommas(item.periodPayment)}</b></span>
+              <span className="loanDetailsItem">Total paid: <b>${numberWithCommas(item.totalPaid)}</b></span>
+              <span className="loanDetailsItem">Total tax: <b>${numberWithCommas(item.totalTax)}</b></span>
             </div>
           )
         })

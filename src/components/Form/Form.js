@@ -107,6 +107,7 @@ function Form() {
             <div>
               <label className="form-label">{t("Interest rate")}</label>
               <NumericFormat
+                valueIsNumericString={true}
                 prefix={"%"}
                 placeholder="%1.5"
                 className="form-input"
@@ -117,7 +118,7 @@ function Form() {
             <div>
               <label className="form-label">{t("Installment number")}</label>
               <input
-                type="text"
+                type="number"
                 placeholder="12"
                 className="form-input"
                 onChange={(e) => setInstallmentNumber(e.target.value)}

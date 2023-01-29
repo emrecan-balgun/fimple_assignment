@@ -17,6 +17,7 @@ const Input = forwardRef((props, ref) => {
 
   return (
     <NumericFormat
+    valueIsNumericString={true}
       prefix={"$"}
       thousandsGroupStyle="thousand"
       thousandSeparator=","

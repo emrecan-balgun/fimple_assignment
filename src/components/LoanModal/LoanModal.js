@@ -10,7 +10,6 @@ import "react-responsive-modal/styles.css";
 import "./loanModal.css";
 import { ModalContext } from "../../context/ModalContext";
 import LoanDetails from "../LoanDetails/LoanDetails";
-import Table from "../Table/Table";
 
 function LoanModal() {
   const { isOpenModal, dispatch } = useContext(ModalContext);
@@ -25,7 +24,6 @@ function LoanModal() {
     <Modal open={open} onClose={onCloseModal} showCloseIcon={false} center>
       <h2 className="modalTitle">Payback Plan</h2>
       <LoanDetails />
-      <Table />
       <div className="buttonContainer">
         {/* <button type="button" className="button">
            <span className="buttonText">Print</span>

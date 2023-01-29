@@ -25,7 +25,8 @@ function Form() {
   const handleInterestRate = (rate) => {
     // remove prefix %
     const newRate = rate.replace(/[%]/g, "");
-    setInterestRate(newRate);
+    const formattedNewRate = newRate / 100;
+    setInterestRate(formattedNewRate);
   };
 
   // Modal
@@ -91,7 +92,7 @@ function Form() {
                 <input
                   className="input-radio"
                   type="radio"
-                  value="weekly"
+                  value="week"
                   name="frequency"
                   onChange={(e) => setInstallmentFrequency(e.target.value)}
                 />
@@ -105,7 +106,7 @@ function Form() {
                 <input
                   className="input-radio"
                   type="radio"
-                  value="monthly"
+                  value="month"
                   name="frequency"
                   onChange={(e) => setInstallmentFrequency(e.target.value)}
                 />
@@ -119,7 +120,7 @@ function Form() {
                 <input
                   className="input-radio"
                   type="radio"
-                  value="yearly"
+                  value="year"
                   name="frequency"
                   onChange={(e) => setInstallmentFrequency(e.target.value)}
                 />

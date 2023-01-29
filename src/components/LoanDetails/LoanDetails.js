@@ -7,10 +7,13 @@ import { calculate } from "../../utils/calculateLoan";
 
 function LoanDetails() {
   const { t } = useTranslation();
+
   const { loanAmount, interestRate, installmentNumber, installmentFrequency, taxRate } =
     useContext(LoanContext);
+
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
+  const currency = localStorage.getItem("currency");
 
   useEffect(() => {
     try {
@@ -40,12 +43,12 @@ function LoanDetails() {
         detail.length > 0 && detail && detail.map((item, index) => {
           return (
             <div key={index} className="loanDetails">
-              <span className="loanDetailsItem">{t("Loan amount")}: <b>${numberWithCommas(item.loanAmount)}</b></span>
+              <span className="loanDetailsItem">{t("Loan amount")}: <b>{currency}{numberWithCommas(item.loanAmount)}</b></span>
               <span className="loanDetailsItem">{t("Interest rate")}: <b>%{numberWithCommas(item.interestRate)}</b></span>
               <span className="loanDetailsItem">{t("Installment number")}: <b>{numberWithCommas(item.installmentNumber)} {t(installmentFrequency)}</b></span>
-              <span className="loanDetailsItem">{t("Installment amount")}: <b>${numberWithCommas(item.periodPayment)}</b></span>
-              <span className="loanDetailsItem">{t("Total paid")}: <b>${numberWithCommas(item.totalPaid)}</b></span>
-              <span className="loanDetailsItem">{t("Total tax")}: <b>${numberWithCommas(item.totalTax)}</b></span>
+              <span className="loanDetailsItem">{t("Installment amount")}: <b>{currency}{numberWithCommas(item.periodPayment)}</b></span>
+              <span className="loanDetailsItem">{t("Total paid")}: <b>{currency}{numberWithCommas(item.totalPaid)}</b></span>
+              <span className="loanDetailsItem">{t("Total tax")}: <b>{currency}{numberWithCommas(item.totalTax)}</b></span>
             </div>
           )
         })
@@ -72,12 +75,12 @@ function LoanDetails() {
                     {item.no}
                   </td>
                   <td data-label={t("Installment amount")}>
-                    ${item.installmentAmount}
+                  {currency}{item.installmentAmount}
                   </td>
-                  <td data-label={t("Profit amount")}>${item.profitAmount}</td>
-                  <td data-label={t("Principal")}>${item.principal}</td>
+                  <td data-label={t("Profit amount")}>{currency}{item.profitAmount}</td>
+                  <td data-label={t("Principal")}>{currency}{item.principal}</td>
                   <td data-label={t("Balance")}>{item.balance}</td>
-                  <td data-label={t(taxRate.toUpperCase())}>${item.tax}</td>
+                  <td data-label={t(taxRate.toUpperCase())}>{currency}{item.tax}</td>
                 </tr>
               );
             })}

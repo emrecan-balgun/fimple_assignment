@@ -15,13 +15,17 @@ const Input = forwardRef((props, ref) => {
     }
   }));
 
+  const currency = localStorage.getItem("currency");
+
+  console.log(currency);
+
   return (
     <NumericFormat
     valueIsNumericString={true}
-      prefix={"$"}
+      prefix={currency}
       thousandsGroupStyle="thousand"
       thousandSeparator=","
-      placeholder="$100,000"
+      placeholder={`${currency}100,000`}
       className="form-input"
       getInputRef={inputRef}
     />

@@ -35,11 +35,12 @@ function Form() {
   const [installmentNumber, setInstallmentNumber] = useState(0);
   const [installmentFrequency, setInstallmentFrequency] = useState(null);
   const [taxRate, setTaxRate] = useState(null);
+  const currency = localStorage.getItem("currency");
 
   useEffect(() => {
     myInputRef.current.focus();
     const language = localStorage.getItem("language");
-    language && i18n.changeLanguage(localStorage.getItem("language"));
+    i18n.changeLanguage(language);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -80,8 +81,8 @@ function Form() {
       dispatchLoan({
         type: "CHANGE_DETAILS",
         payload: {
-          // remove prefix $ and commas
-          loanAmount: myInputRef.current.value().replace(/[$,]/g, ""),
+          // remove prefix currency and commas
+          loanAmount: myInputRef.current.value().replace(currency, "").replace(/,/g, ""),
           interestRate,
           installmentNumber,
           installmentFrequency,

@@ -14,6 +14,7 @@ function Language() {
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
     localStorage.setItem("language", language);
+    localStorage.setItem("currency", language === "tr" ? "₺" : "$")
   };
 
   return (

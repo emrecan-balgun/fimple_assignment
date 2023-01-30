@@ -61,7 +61,6 @@ function Form() {
   };
 
   const resetInputs = () => {
-    alert("girdim");
     if (
       myInputRef.current.value() ||
       interestRate ||

@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Live: fimple-assignment.vercel.app
+Live: http://fimple-assignment.vercel.app
 
 ## Available Scripts
 
